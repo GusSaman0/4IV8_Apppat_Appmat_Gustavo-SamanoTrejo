@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversión Bancaria</title>
+    <script src="./JS/Calcular_Inversion.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Calculadora de Inversión Bancaria</h2>
+        <form id="formulario" onsubmit="return calculadora()">
+            <input type="text" id="capital" placeholder="Capital Inicial">
+            <input type="text" id="meses" placeholder="Número de Meses">
+            <button type="submit">Calcular</button>
+        </form>
+        <p id="resultado"></p>
+    </div>
+</body>
+</html>

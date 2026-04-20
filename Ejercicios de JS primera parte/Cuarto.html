@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiante</title>
+    <script src="./JS/Calcular_Calificacion.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Calcular Calificación</h2>
+        <form id="formulario" onsubmit="return calificacion()">
+            <div>
+                <input type="text" id="parcial1" placeholder="calificación de 1 parcial">
+                <input type="text" id="parcial2" placeholder="calificación de 2 parcial">
+                <input type="text" id="parcial3" placeholder="calificación de 3 parcial">
+            </div>
+            <input type="text" id="examenFinal" placeholder="examen final">
+            <input type="text" id="trabajoFinal" placeholder="trabajo final">
+            <button type="submit">Calcular</button>
+        </form>
+        <p id="resultado"></p>
+    </div>
+</body>
+</html>

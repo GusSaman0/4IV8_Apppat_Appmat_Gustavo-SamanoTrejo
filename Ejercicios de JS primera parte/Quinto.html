@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/Calcular_Estudiantes.js"></script>
+</head>
+<body>
+    <h2>Conteo de Estudiantes</h2>
+    <form id="formulario" onsubmit="return conteo()">
+        <input type="number" id="hombres" name="hombres" min="0" placeholder="Numero de hombres">
+        <input type="number" id="mujeres" name="mujeres" min="0" placeholder="Numero de mujeres">
+        <button type="submit">Calcular</button>
+    </form>
+    <h2>Cantidad de Hombres</h2>
+    <p id="resultadoHombres"></p>
+    <h2>Cantidad de Mujeres</h2>
+    <p id="resultadoMujeres"></p>
+</body>
+</html>
