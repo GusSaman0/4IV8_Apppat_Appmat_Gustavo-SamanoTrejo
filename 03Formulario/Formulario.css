@@ -1,0 +1,92 @@
+*
+{
+
+}
+
+body
+{
+    background-color: #730202;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+form
+{
+    background-color: #A63737;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 70px;
+    box-shadow: 0px 0px 10px rgba(242, 213, 206,0.5);
+}
+
+.opcion2
+{
+    margin-top: 20px;
+    background-color: #A63737;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 85%;
+    box-shadow: 0px 0px 10px rgba(242, 213, 206,0.5);
+}
+a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 100%;
+}
+
+p
+{
+    text-align: center;
+    font-size: 25px;
+    background-color: #A63737;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(242, 213, 206,0.5);
+    width: 400px;
+    margin: auto;
+}
+
+input
+{
+    background: none;
+    border: 2px solid #f2d5ce;
+    border-radius: 12px;
+    padding: 8px 14px;
+    width: 100%;
+    color: white;
+}
+
+.cajitas
+{
+    border: 2px solid #f2d5ce;
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+}
+
+.interior_Cajitas
+{
+    background: none;
+    border: none;
+    padding: 8px 14px;
+    width: 100%;
+}
+
+input::placeholder
+{
+    color: #f2d5ce;
+}
+
+.Buttons
+{
+    border-radius: 12px;
+    display: flex;
+    gap: 50px;
+    padding: 8px 14px;
+    background: none;
+}
+

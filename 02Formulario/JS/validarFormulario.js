@@ -1,6 +1,6 @@
 function validar(formulario) {
     // 1. Validar longitud
-    if(formulario.formulario.trim(-length))
+    if(formulario.nombre.value.trim().length < 3)
     {
         alert("Por favor ingrese un nombre mauyor de 3 caracteres");
         formulario.nombre.focus();
@@ -31,6 +31,7 @@ function validar(formulario) {
         formulario.nombre.focus();
         return false;
     }
+
     return true; // Es importante retornar true si todo sale bien
     if(formulario.nombre.value.trim().length < 3) {
         alert("Por favor ingrese la edad");
@@ -67,6 +68,5 @@ function validar(formulario) {
     return true; // Es importante retornar true si todo sale bien
     var correoelectronico = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
     var txt = formulario.email.value;
-    alert("Email " + (correoelectronico.test(txt) ? "válido" : "inválido"));
-
+    alert("Email " + (correoelectronico.test(txt) ? "no" : "valido"));
 }
