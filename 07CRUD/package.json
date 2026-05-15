@@ -1,5 +1,22 @@
 {
+  "name": "07crud",
+  "version": "1.0.0",
+  "description": "Ejemplo de crud con vainillaJS",
+  "keywords": [
+    "crud",
+    "mysql",
+    "nodejs"
+  ],
+  "license": "ISC",
+  "author": "Sámano Trejo Gustavo",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "dependencies": {
     "mysql2": "^3.22.3"
-  }
+  },
+  "devDependencies": {}
 }

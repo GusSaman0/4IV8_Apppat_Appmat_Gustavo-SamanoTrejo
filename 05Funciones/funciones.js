@@ -75,10 +75,10 @@ razaDePerros.forEach((raza, indice, arregloOruginal) => console.log(raza))
 //Por Ejemplo
 Necesitamos unba funcion para buscar la raza Chihuahua y sino existe agregala
 
-//fimcopm ,a`esta fimcopm otera spnre ñps eñe,emtps deñ arregñp y regresa uin arreglo diferente con el podemos hacer los que queramos sin necesidad de modificar el arreglo original
-*/
+//funcion map esta funcion itera sobre los elementos del arreglo y regresa un arreglo diferente con el podemos hacer los que queramos sin necesidad de modificar el arreglo original
 
 const razasDePerrosMayuscular = razaDePerros.map((raza,indice, arregloOriginal) => console.log(razaDePerros.toUpperCase()));
+*/
 
 if(razaDePerros.find(raza => raza === "Chihuahua")){
     console.log("la raza si c encontro y es chihuahua");
