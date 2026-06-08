@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 3 - Tienda con Express y MySQL</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Galeria de Artistas</h1>
+        <p>tema (Dibujo)</p>
+        <!-- Navegación por pestañas para cambiar entre secciones -->
+        <nav class="tabs">
+            <button class="tab active" onclick="cambiarSeccion('artistas')">Artistas</button>
+            <button class="tab" onclick="cambiarSeccion('estilos')">Estilos</button>
+            <button class="tab" onclick="cambiarSeccion('dibujos')">Dibujos</button>
+            <button class="tab" onclick="cambiarSeccion('obras')">Obras</button>
+        </nav>
+    </header>
+    <main>
+        <!-- Panel de estado de la API -->
+        <section class="info-api">
+            <h3>Estado de la API</h3>
+            <div class="api-status">
+                <span id="api-metodo" class="badge">-</span>
+                <span id="api-url" class="api-url">-</span>
+                <span id="api-codigo" class="badge badge-neutral">-</span>
+            </div>
+        </section>
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: ARTISTAS -->
+        <!-- ========================================================= -->
+        <div id="seccion-artistas" class="seccion">
+            <section class="formulario-section">
+                <h2 id="form-titulo-artista">Agregar Artista</h2>
+                <form id="form-artista" novalidate>
+                    <input type="hidden" id="artista-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="artista-nombre">Nombre:</label>
+                            <input type="text" id="artista-nombre" placeholder="Ej: María García" maxlength="100" required>
+                            <span class="error" id="error-artista-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="artista-email">Email:</label>
+                            <input type="email" id="artista-email" placeholder="Ej: MarGar@gmail.com" maxlength="100" required>
+                            <span class="error" id="error-artista-email"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="artista-descripcion">Descripcion:</label>
+                            <input type="text" id="artista-descripcion" placeholder="Ej:Artista mexicana del siglo XX" maxlength="255" required>
+                            <span class="error" id="error-artista-descripcion"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-artista">Guardar</button>
+                        <button type="button" id="btn-cancelar-artista" class="btn-secundario" style="display: none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+            <section class="tabla-section">
+                <h2>artistas <span id="contador-artistas" class="badge badge-neutral"></span></h2>
+                <p id="carga-artistas">Cargando...</p>
+                <table id="tabla-artistas" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Descripcion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-artistas"></tbody>
+                </table>
+            </section>
+        </div>
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: ESTILOS -->
+        <!-- ========================================================= -->
+        <div id="seccion-estilos" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-estilo">Agregar Estilo</h2>
+                <form id="form-estilo" novalidate>
+                    <input type="hidden" id="estilo-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="estilo-nombre">Nombre del Estilo:</label>
+                            <input type="text" id="estilo-nombre" placeholder="Ej: Laptop HP" maxlength="150" required>
+                            <span class="error" id="error-estilo-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="estilo-descripcion">Descripción:</label>
+                            <input type="text" id="estilo-descripcion" placeholder="Ej: Técnica basada en pinceladas sueltas" maxlength="255" required>
+                            <span class="error" id="error-estilo-descripcion"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="estilo-origen">Origen / Época:</label>
+                            <input type="text" id="estilo-origen" placeholder="Ej: Francia, siglo XIX" maxlength="100" required>
+                            <span class="error" id="error-estilo-origen"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-estilo">Guardar</button>
+                        <button type="button" id="btn-cancelar-estilo" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>estilos <span id="contador-estilos" class="badge badge-neutral"></span></h2>
+                <p id="carga-estilos">Cargando...</p>
+                <table id="tabla-estilos" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Origen / Época</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-estilos"></tbody>
+                </table>
+            </section>
+        </div>
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: DIBUJOS -->
+        <!-- ========================================================= -->
+        <div id="seccion-dibujos" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-dibujo">Agregar Dibujo</h2>
+                <form id="form-dibujo" novalidate>
+                    <input type="hidden" id="dibujo-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="dibujo-nombre">Titulo:</label>
+                            <input type="text" id="dibujo-nombre" placeholder="Ej: Las dos Fridas" maxlength="150" required>
+                            <span class="error" id="error-dibujo-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="dibujo-descripcion">Descripción:</label>
+                            <input type="text" id="dibujo-descripcion" placeholder="Ej: Técnica basada en pinceladas sueltas" maxlength="255" required>
+                            <span class="error" id="error-dibujo-descripcion"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="dibujo-estilo">Estilo:</label>
+                            <select id="dibujo-estilo" required>
+                                <option value="">-- Seleccionar --</option>
+                            </select>
+                            <span class="error" id="error-dibujo-estilo"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="dibujo-artista">Artista:</label>
+                            <select id="dibujo-artista">
+                                <option value="">--Seleccionar artista--</option>
+                            </select>
+                            <span class="error" id="error-dibujo-artista"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="dibujo-imagen">Imagen:</label>
+                            <input type="file" id="dibujo-imagen" accept="image/*" required>
+                            <span class="error" id="error-dibujo-imagen"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-dibujo">Guardar</button>
+                        <button type="button" id="btn-cancelar-dibujo" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Dibujos <span id="contador-dibujos" class="badge badge-neutral"></span></h2>
+                <p id="carga-dibujos">Cargando...</p>
+                <table id="tabla-dibujos" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Artista</th>
+                            <th>Estilo</th>
+                            <th>Imagen</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-dibujos"></tbody>
+                </table>
+            </section>
+        </div>
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: OBRAS -->
+        <!-- ========================================================= -->
+        <div id="seccion-obras" class="seccion" style="display: none;">
+            <section class="tabla-section">
+                <h2>Galeria de Obras <span id="contador-obras" class="badge badge-neutral"></span></h2>
+                <p id="carga-obras">Cargando...</p>
+                <div id="galeria-obras" class="galeria"></div>
+            </section>
+        </div>
+        <!-- Notificaciones -->
+        <div id="notificacion" class="notificacion" style="display:none;"></div>
+    </main>
+
+    <footer>
+        <p>PNT tema (Dibujo)</p>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+</html>
